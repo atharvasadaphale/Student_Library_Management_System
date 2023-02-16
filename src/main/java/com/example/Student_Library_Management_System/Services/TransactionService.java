@@ -18,6 +18,7 @@ public class TransactionService {
         int bookid= issueBookRequestDto.getBookId();
         int cardid=issueBookRequestDto.getCardId();
         if(bookService.isValidBook(bookid) && cardService.isValidCard(cardid)){
+            bookService.issueBook(bookid, cardid);
             return "Book issued successfully!";
         }
         else{

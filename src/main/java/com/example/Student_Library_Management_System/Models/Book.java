@@ -19,6 +19,7 @@ public class Book {
 
     private int pages;
 
+
     @Enumerated(value = EnumType.STRING)
     private Genre genre;
 

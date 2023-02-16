@@ -14,7 +14,7 @@ public class CardService {
     CardRepository cardRepository;
 
     public Boolean isValidCard(int cardId) {
-        Optional<Card> card = cardRepository.findById(cardId);
+        Card card = cardRepository.findById(cardId).get();
         if(card == null){
             return false;
         }
