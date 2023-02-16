@@ -11,10 +11,18 @@ public class TransactionService {
 
     @Autowired
     TransactionRepository transactionRepository;
-
+    BookService bookService;
+    CardService cardService;
     public  String issueBook(IssueBookRequestDto issueBookRequestDto){
-        return "";
-    }
 
+        int bookid= issueBookRequestDto.getBookId();
+        int cardid=issueBookRequestDto.getCardId();
+        if(bookService.isValidBook(bookid) && cardService.isValidCard(cardid)){
+            return "Book issued successfully!";
+        }
+        else{
+            return "Book cannot be issued at this moment.";
+        }
+    }
 
 }

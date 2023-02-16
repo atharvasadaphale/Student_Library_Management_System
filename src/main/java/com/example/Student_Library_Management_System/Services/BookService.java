@@ -5,17 +5,20 @@ import com.example.Student_Library_Management_System.DTOs.BookRequestDto;
 import com.example.Student_Library_Management_System.Models.Author;
 import com.example.Student_Library_Management_System.Models.Book;
 import com.example.Student_Library_Management_System.Repositories.AuthorRepository;
+import com.example.Student_Library_Management_System.Repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
 
-    @Autowired
+    //@Autowired
     AuthorRepository authorRepository;
-
+    @Autowired
+    BookRepository bookRepository;
 
     public String addBook(BookRequestDto bookRequestDto){
 
@@ -64,4 +67,14 @@ public class BookService {
         return "Book Added successfully";
 
     }
+    public boolean isValidBook(int bookId){
+        // Check if the book with the given id exists in the database
+       Optional<Book> book = bookRepository.findById(bookId);
+        if(book == null){
+            return false;
+        }
+        return true;
+    }
+
+
 }
